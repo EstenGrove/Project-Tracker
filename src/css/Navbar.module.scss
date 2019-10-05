@@ -1,0 +1,133 @@
+@import '../sass/variables';
+@import '../sass/mixins';
+
+.Navbar {
+    width: 100vw;
+    height: 6rem;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #ffffff;
+    border-bottom: 1px solid #ccc;
+    -webkit-box-shadow: map-get($map: $shadows, $key: 'light');
+    box-shadow: map-get($map: $shadows, $key: 'light');
+    padding: 1rem 2rem;
+    @include row_vertical_center;
+
+    &_menu {
+        width: 3rem;
+        height: 3rem;
+        margin-right: 4rem;
+        fill: map-get($map: $blueGreys, $key: 'subheadings');
+
+
+        &:hover {
+            cursor: pointer;
+            fill: map-get($map: $colors, $key: 'main');
+        }
+    }
+
+    &_search {
+        width: 20rem;
+        height: 3rem;
+        border-radius: .5rem;
+        border: none;
+        padding-left: .2rem;
+        background-color: map-get($map: $colors, $key: 'mainGrey');
+        @include row_vertical_center;
+
+        &:focus-within {
+            border: 1px solid map-get($map: $colors, $key: 'mainPurple');
+        }
+
+        &_icon {
+            margin-top: .3rem;
+            width: 2.3rem;
+            height: 2.3rem;
+            fill: map-get($map: $blueGreys, $key: 'subheadings');
+        }
+
+        &_input {
+            width: 100%;
+            height: 100%;
+            padding-left: .3rem;
+            border: none;
+            border-radius: .5rem;
+            outline: none;
+            font-size: 1.6rem;
+            color: map-get($map: $blueGreys, $key: 'headings');
+            background-color: map-get($map: $colors, $key: 'mainGrey');
+
+
+
+
+
+            &::-webkit-input-placeholder {
+                color: map-get($map: $blueGreys, $key: 'subheadings');
+                font-weight: 300;
+            }
+
+            &:-ms-input-placeholder {
+                color: map-get($map: $blueGreys, $key: 'subheadings');
+                font-weight: 300;
+            }
+
+            &::-ms-input-placeholder {
+                color: map-get($map: $blueGreys, $key: 'subheadings');
+                font-weight: 300;
+            }
+
+            &::placeholder {
+                color: map-get($map: $blueGreys, $key: 'subheadings');
+                font-weight: 300;
+            }
+        }
+    }
+
+    &_actions {
+        width: auto;
+        height: 100%;
+        margin-left: auto;
+        @include row_vertical_center;
+
+        &_icon {
+            width: 3rem;
+            height: 3rem;
+            margin-right: 1.5rem;
+            fill: map-get($map: $blueGreys, $key: 'subheadings');
+
+            &:hover {
+                cursor: pointer;
+                fill: map-get($map: $blueGreys, $key: 'headings');
+            }
+        }
+
+        &_bell {
+            position: relative;
+            width: 2rem;
+            height: 2rem;
+            fill: map-get($map: $blueGreys, $key: 'subheadings');
+            z-index: 1;
+
+            &:hover {
+                cursor: pointer;
+                fill: map-get($map: $blueGreys, $key: 'headings');
+            }
+        }
+    }
+
+    &_actions_notifications {
+        position: absolute;
+        top: 1.2rem;
+        right: 1.4rem;
+        width: 1.5rem;
+        height: 1.5rem;
+        background-color: map-get($map: $colors, $key: 'mainRed');
+        color: #ffffff;
+        border-radius: 50%;
+        @include col_center_all;
+        padding-bottom: .2rem;
+        font-weight: bold;
+        z-index: 10;
+    }
+}

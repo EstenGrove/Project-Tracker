@@ -1,0 +1,29 @@
+@import '../sass/variables';
+@import '../sass/mixins';
+
+.CardTaskList {
+    width: 100%;
+    height: auto;
+    padding: 1rem;
+
+    &_inner {
+        @include fill_container;
+
+        &_title {
+            font-weight: 400;
+            color: map-get($map: $blueGreys, $key: 'subheadings');
+        }
+
+        &_btn {
+            background-color: transparent;
+            border: none;
+            outline: none;
+            text-decoration: underline;
+            color: map-get($map: $colors, $key: 'mainPurple');
+
+            &:hover {
+                cursor: pointer;
+            }
+        }
+    }
+}
