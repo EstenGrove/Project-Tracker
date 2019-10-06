@@ -7,8 +7,10 @@ const AddCardModal = ({
   closeModal,
   details,
   handleChange,
-  handleSubmit
+  handleSubmit,
+  ...rest
 }) => {
+  console.log(rest);
   return (
     <div
       className={
@@ -39,6 +41,7 @@ const AddCardModal = ({
           className={styles.AddCardModal_form_input}
           placeholder="some project..."
           onChange={handleChange}
+          value={rest.cardTitle}
         />
         <button
           className={styles.AddCardModal_form_btn}
@@ -67,6 +70,7 @@ const AddCardModal = ({
           className={styles.AddCardModal_form_input}
           placeholder="some list of tasks..."
           onChange={handleChange}
+          value={rest.cardList}
         />
         <div className={styles.AddCardModal_form_comment}>
           <div className={styles.AddCardModal_form_comment_iconWrapper}>
@@ -89,6 +93,7 @@ const AddCardModal = ({
             resize={"none"}
             required={false}
             onChange={handleChange}
+            value={rest.cardComment}
           />
         </div>
         <div className={styles.AddCardModal_form_dates}>
@@ -109,6 +114,7 @@ const AddCardModal = ({
           className={styles.AddCardModal_form_input}
           placeholder="Set a due date..."
           onChange={handleChange}
+          value={rest.cardDueDate}
         />
 
         <button

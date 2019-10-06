@@ -10,10 +10,16 @@ import { keyGenerator } from "../utils/keyGenerator";
 const ProjectsPage = () => {
   const uuid = keyGenerator();
   const { state, dispatch } = useContext(GlobalState);
+  const [isEditing, setIsEditing] = useState(false);
   const [openCardModal, setOpenCardModal] = useState(false);
   const cardModalHandler = () => setOpenCardModal(!openCardModal);
 
-  const [inputs, setInputs] = useState();
+  const [inputs, setInputs] = useState({
+    cardTitle: undefined,
+    cardTask: undefined,
+    cardComment: undefined,
+    cardDueDate: undefined
+  });
 
   const handleChange = e => {
     const { name, value } = e.target;
@@ -39,6 +45,19 @@ const ProjectsPage = () => {
     cardModalHandler();
   };
 
+  const createList = card => {
+    setIsEditing(!isEditing);
+    console.log(card);
+    // dispatch({
+    //   type: "CREATE_LIST",
+    //   data: {
+    //     id: card.id,
+    //     newList: [],
+    //     newTask: ""
+    //   }
+    // });
+  };
+
   const deleteCard = card => {
     console.log(card.id);
     dispatch({
@@ -60,6 +79,8 @@ const ProjectsPage = () => {
               {...card}
               key={uuid + index}
               deleteCard={() => deleteCard(card)}
+              createList={() => createList(card)}
+              isEditing={isEditing}
             />
           ))}
           <AddCardButton openCardModal={cardModalHandler} />
@@ -72,6 +93,7 @@ const ProjectsPage = () => {
         closeModal={cardModalHandler}
         handleChange={handleChange}
         handleSubmit={e => handleSubmit(e)}
+        {...inputs}
       />
     </>
   );

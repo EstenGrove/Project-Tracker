@@ -112,14 +112,7 @@ export const stateReducer = (state, action) => {
 
       return [...state, newCard];
     case "CREATE_LIST":
-      const currentID = action.data.id;
-      const currentCard = state.filter((card, index) => currentID === card.id);
-      const { lists: existingLists } = currentCard;
-      const newList = action.data.newList;
-      const allLists = { existingLists, newList };
-      currentCard.lists = allLists;
-
-      return [...state, currentCard];
+      return;
     case "CREATE_TASK":
       return;
     // DELETING
