@@ -26,15 +26,27 @@ const ProjectsPage = () => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    const { listTitle, listTask, listComment, dueDate } = inputs;
+    const { cardTitle, cardTask, cardComment, cardDueDate } = inputs;
+
     dispatch({
       type: "CREATE_CARD",
       data: {
-        title: listTitle,
+        title: cardTitle,
         lists: {}
       }
     });
+    setInputs({});
     cardModalHandler();
+  };
+
+  const deleteCard = card => {
+    console.log(card.id);
+    dispatch({
+      type: "DELETE_CARD",
+      data: {
+        id: card.id
+      }
+    });
   };
 
   return (
@@ -43,7 +55,12 @@ const ProjectsPage = () => {
       <section className={styles.ProjectsPage}>
         <CardsContainer>
           {state.map((card, index) => (
-            <Card title={card.title} {...card} key={uuid + index} />
+            <Card
+              title={card.title}
+              {...card}
+              key={uuid + index}
+              deleteCard={() => deleteCard(card)}
+            />
           ))}
           <AddCardButton openCardModal={cardModalHandler} />
         </CardsContainer>

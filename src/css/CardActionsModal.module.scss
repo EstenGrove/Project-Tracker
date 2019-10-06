@@ -1,0 +1,91 @@
+@import '../sass/variables';
+@import '../sass/mixins';
+
+
+.CardActionsModal {
+    display: none;
+    width: 25rem;
+    height: 30rem;
+    padding: 1rem .5rem;
+    position: absolute;
+    top: 5rem;
+    left: 20rem;
+    border-radius: .5rem;
+    -webkit-box-shadow: map-get($map: $shadows, $key: 'heavy');
+    box-shadow: map-get($map: $shadows, $key: 'heavy');
+    z-index: 30;
+
+    background-color: map-get($map: $blueGreys, $key: 'light');
+    border: 5px solid map-get($map: $blueGreys, $key: 'light');
+
+    &_inner {
+        @include fill_container;
+        padding: 1rem .2rem;
+
+        &_title {
+            text-align: center;
+            font-size: 1.6rem;
+            color: map-get($map: $blueGreys, $key: 'text');
+        }
+
+        &_options {
+            @include col_start_start;
+            list-style-type: none;
+
+            &_item {
+                width: 100%;
+                padding: 1rem .5rem;
+                @include row_between_center;
+
+                &:hover {
+                    background-color: map-get($map: $blueGreys, $key: 'silk');
+                    cursor: pointer;
+                }
+
+                &:hover>&_text {
+                    color: map-get($map: $colors, $key: 'main');
+                }
+
+                &_text {
+                    padding: .2rem .3rem;
+                    font-size: 1.6rem;
+                    color: map-get($map: $greys, $key: 'dark');
+                    font-weight: 300;
+
+
+
+                    &:nth-last-of-type() {
+                        color: map-get($map: $colors, $key: 'mainRed');
+                    }
+                }
+            }
+        }
+
+        &_icon {
+            width: 1.5rem;
+            height: 1.5rem;
+
+            &:hover {
+                cursor: pointer;
+            }
+
+            &:nth-child(2n + 1) {
+                fill: map-get($map: $colors, $key: 'mainRed');
+            }
+        }
+    }
+
+    &_close {
+        width: 1.5rem;
+        height: 1.5rem;
+        fill: map-get($map: $colors, $key: 'mainRed');
+
+        &:hover {
+            cursor: pointer;
+        }
+    }
+}
+
+.show {
+    display: initial;
+}

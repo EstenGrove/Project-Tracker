@@ -1,11 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "../css/Card.module.scss";
 import sprite from "../assets/project-tracker.svg";
 import CardTaskList from "./CardTaskList";
+import CardActionsModal from "./CardActionsModal";
 import { keyGenerator } from "../utils/keyGenerator";
 
-const Card = ({ ...card }) => {
+const Card = ({ deleteCard, ...card }) => {
   const uuid = keyGenerator();
+  const [showActionsModal, setShowActionsModal] = useState(false);
+
+  const openActionsModal = (...card) => {
+    setShowActionsModal(!showActionsModal);
+    console.log(card);
+  };
 
   function mapListsToComponents(lists) {
     const all = Object.keys(lists);
@@ -27,7 +34,10 @@ const Card = ({ ...card }) => {
     <div className={styles.Card}>
       <div className={styles.Card_top}>
         <h4 className={styles.Card_top_title}>{card && card.title}</h4>
-        <svg className={styles.Card_top_menu}>
+        <svg
+          className={styles.Card_top_menu}
+          onClick={() => openActionsModal(card)}
+        >
           <use xlinkHref={`${sprite}#icon-keyboard_control`}></use>
         </svg>
       </div>
@@ -35,6 +45,11 @@ const Card = ({ ...card }) => {
         {card && mapListsToComponents(card.lists)}
         <button className={styles.Card_inner_btn}>Create a list</button>
       </div>
+      <CardActionsModal
+        show={showActionsModal}
+        close={() => setShowActionsModal(false)}
+        deleteCard={() => deleteCard(card)}
+      />
     </div>
   );
 };

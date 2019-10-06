@@ -124,7 +124,9 @@ export const stateReducer = (state, action) => {
       return;
     // DELETING
     case "DELETE_CARD":
-      return;
+      const { id } = action.data;
+
+      return [...state.filter((card, index) => card.id !== id)];
     case "DELETE_LIST":
       return;
     case "DELETE_TASK":

@@ -2,6 +2,7 @@
 @import '../sass/mixins';
 
 .Card {
+    position: relative;
     width: 25rem;
     height: auto;
     padding: 1.5rem .5rem;

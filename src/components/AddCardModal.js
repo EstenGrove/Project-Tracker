@@ -29,18 +29,24 @@ const AddCardModal = ({
         </h2>
       </div>
       <form className={styles.AddCardModal_form}>
-        <label htmlFor="listTitle" className={styles.AddCardModal_form_label}>
+        <label htmlFor="cardTitle" className={styles.AddCardModal_form_label}>
           Create a card title
         </label>
         <input
           type="text"
-          name="listTitle"
-          id="listTitle"
+          name="cardTitle"
+          id="cardTitle"
           className={styles.AddCardModal_form_input}
           placeholder="some project..."
           onChange={handleChange}
         />
-
+        <button
+          className={styles.AddCardModal_form_btn}
+          onSubmit={e => handleSubmit(e)}
+          onClick={e => handleSubmit(e)}
+        >
+          Create
+        </button>
         <hr style={{ width: "100%", opacity: ".3", marginBottom: "3rem" }} />
         {/* CARD ADDONS */}
         <div className={styles.AddCardModal_form_addons}>
@@ -51,13 +57,13 @@ const AddCardModal = ({
             Card Add-ons
           </h4>
         </div>
-        <label htmlFor="listTask" className={styles.AddCardModal_form_label}>
+        <label htmlFor="cardList" className={styles.AddCardModal_form_label}>
           Add a list to the card
         </label>
         <input
           type="text"
-          name="listTask"
-          id="listTask"
+          name="cardList"
+          id="cardList"
           className={styles.AddCardModal_form_input}
           placeholder="some list of tasks..."
           onChange={handleChange}
@@ -68,7 +74,7 @@ const AddCardModal = ({
               <use xlinkHref={`${sprite}#icon-list`}></use>
             </svg>
             <label
-              htmlFor="listComment"
+              htmlFor="cardComment"
               className={styles.AddCardModal_form_label}
             >
               Add a comment
@@ -76,8 +82,8 @@ const AddCardModal = ({
           </div>
           <textarea
             type="text"
-            name="listComment"
-            id="listComment"
+            name="cardComment"
+            id="cardComment"
             className={styles.AddCardModal_form_comment_textarea}
             placeholder="Write a comment..."
             resize={"none"}
@@ -89,14 +95,17 @@ const AddCardModal = ({
           <svg className={styles.AddCardModal_form_dates_icon}>
             <use xlinkHref={`${sprite}#icon-calendar1`}></use>
           </svg>
-          <label htmlFor="dueDate" className={styles.AddCardModal_form_label}>
+          <label
+            htmlFor="cardDueDate"
+            className={styles.AddCardModal_form_label}
+          >
             Due Date
           </label>
         </div>
         <input
           type="datetime-local"
-          name="dueDate"
-          id="dueDate"
+          name="cardDueDate"
+          id="cardDueDate"
           className={styles.AddCardModal_form_input}
           placeholder="Set a due date..."
           onChange={handleChange}
