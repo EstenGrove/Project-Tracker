@@ -6,6 +6,8 @@
     height: auto;
     padding: 1.5rem .5rem;
     border-radius: .5rem;
+    margin-bottom: 2rem;
+    margin-right: 2rem;
     background-color: #ffffff;
     -webkit-box-shadow: map-get($map: $shadows, $key: 'light');
     box-shadow: map-get($map: $shadows, $key: 'light');

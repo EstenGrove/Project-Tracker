@@ -27,6 +27,7 @@ $yellow: hsla(60, 92%, 71%, 1);
 $grey: hsla(216, 14%, 93%, 1);
 $altYellow: hsla(39, 100%, 70%, 1);
 $blackBlue: hsla(220, 18%, 19.6%, 1);
+$blueHeadings: hsla(218, 54%, 20%, 1);
 
 // main colors map
 $colors: (main: $vibe,
@@ -96,5 +97,7 @@ $blueGreys: (main: hsla(214, 32%, 91%, 1),
     subheadings: hsla(218, 17, 65, 1),
     bgBlue: hsla(200, 19%, 18%, 1),
     bgCharcoal: hsla(200, 18%, 26%, 1),
+    blueHeadings: $blueHeadings,
     subtle: hsla(0, 0%, 96%, 1),
+    silk: hsla(220, 16%, 96%, 1),
 );

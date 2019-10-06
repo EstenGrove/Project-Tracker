@@ -1,0 +1,8 @@
+@import '../sass/variables';
+@import '../sass/mixins';
+
+.CardsContainer {
+    @include fill_container;
+    // @include col_start_start;
+    @include base_flex;
+}

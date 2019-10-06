@@ -11,6 +11,7 @@
     left: 50%;
     margin-top: -27.5rem;
     margin-left: -22.5rem;
+    overflow-y: auto;
     border: 1px solid #ccc;
     border-radius: .5rem;
     background-color: #ffffff;
@@ -18,9 +19,26 @@
     box-shadow: map-get($map: $shadows, $key: 'heavy');
     display: none;
 
-    &_title {
-        margin-top: 2rem;
-        color: map-get($map: $blueGreys, $key: 'text');
+    &_top {
+        width: 100%;
+        margin-bottom: 2rem;
+        @include row_vertical_center;
+
+        &_title {
+            font-size: 2rem;
+            margin-top: 2rem;
+            color: map-get($map: $blueGreys, $key: 'blueHeadings');
+        }
+
+        &_icon {
+            -ms-flex-item-align: end;
+            align-self: flex-end;
+            width: 2rem;
+            height: 2rem;
+            margin-right: 1rem;
+            margin-bottom: .5rem;
+            fill: map-get($map: $blueGreys, $key: 'headings');
+        }
     }
 
     &_close {
@@ -33,16 +51,17 @@
     &_form {
         padding: 2rem;
         @include fill_container;
+        min-height: 100%;
         @include col_start_start;
 
         &_label {
             font-size: 1.7rem;
-            color: map-get($map: $blueGreys, $key: 'subheadings');
+            color: map-get($map: $blueGreys, $key: 'blueHeadings');
         }
 
         &_input {
             width: 100%;
-            height: 4rem;
+            min-height: 4rem;
             padding-left: .5rem;
             border: none;
             outline: none;
@@ -84,9 +103,145 @@
                 color: map-get($map: $blueGreys, $key: 'subheadings');
             }
         }
+
+        &_comment {
+            width: 100%;
+            height: auto;
+            @include col_start_start;
+
+            &_iconWrapper {
+                width: 100%;
+                @include row_vertical_center;
+
+                &_icon {
+                    width: 2rem;
+                    height: 2rem;
+                    margin-left: -2rem;
+                    margin-right: .5rem;
+                    fill: map-get($map: $blueGreys, $key: 'headings');
+                }
+            }
+
+            &_textarea {
+                min-width: 100%;
+                height: 15rem;
+                padding: 1rem;
+                border: none;
+                outline: none;
+                border-radius: 0.5rem;
+                font-size: 1.6rem;
+                font-weight: 300;
+                background-color: map-get($map: $colors, $key: 'mainGrey');
+                margin-bottom: 2.5rem;
+                resize: none;
+
+                &:focus-within {
+                    border: 1px solid map-get($map: $colors, $key: 'main');
+                }
+
+                &::-webkit-input-placeholder {
+                    padding-left: .3rem;
+                    font-size: 1.6rem;
+                    font-weight: 300;
+                    color: map-get($map: $blueGreys, $key: 'subheadings');
+                }
+
+                &:-ms-input-placeholder {
+                    padding-left: .3rem;
+                    font-size: 1.6rem;
+                    font-weight: 300;
+                    color: map-get($map: $blueGreys, $key: 'subheadings');
+                }
+
+                &::-ms-input-placeholder {
+                    padding-left: .3rem;
+                    font-size: 1.6rem;
+                    font-weight: 300;
+                    color: map-get($map: $blueGreys, $key: 'subheadings');
+                }
+
+                &::placeholder {
+                    padding-left: .3rem;
+                    font-size: 1.6rem;
+                    font-weight: 300;
+                    color: map-get($map: $blueGreys, $key: 'subheadings');
+                }
+            }
+        }
+
+        &_dates {
+            width: 100%;
+            @include row_start_center;
+
+
+
+            &_icon {
+                width: 2rem;
+                height: 2rem;
+                margin-left: -2rem;
+                margin-right: .5rem;
+                fill: map-get($map: $blueGreys, $key: 'headings');
+            }
+        }
+
+        & input[type="datetime-local"] {
+            height: 3.5rem;
+
+
+            &::-webkit-input-placeholder {
+                color: map-get($map: $blueGreys, $key: 'subheadings');
+                font-family: 'Open Sans', sans-serif;
+                font-size: 1.6rem;
+            }
+
+
+
+            &:-ms-input-placeholder {
+                color: map-get($map: $blueGreys, $key: 'subheadings');
+                font-family: 'Open Sans', sans-serif;
+                font-size: 1.6rem;
+            }
+
+
+
+            &::-ms-input-placeholder {
+                color: map-get($map: $blueGreys, $key: 'subheadings');
+                font-family: 'Open Sans', sans-serif;
+                font-size: 1.6rem;
+            }
+
+
+
+            &::placeholder {
+                color: map-get($map: $blueGreys, $key: 'subheadings');
+                font-family: 'Open Sans', sans-serif;
+                font-size: 1.6rem;
+            }
+        }
+
+        &_btn {
+            padding: 1.2rem 2.4rem;
+            background-color: map-get($map: $flatColors, $key: 'main');
+            color: map-get($map: $colors, $key: 'main');
+            font-weight: 600;
+            font-size: 1.6rem;
+            border: none;
+            border-radius: .5rem;
+            outline: none;
+            -ms-flex-item-align: end;
+            align-self: flex-end;
+
+            &:hover {
+                cursor: pointer;
+                background-color: map-get($map: $flatColors, $key: 'altPurple');
+            }
+        }
     }
 
+}
 
+input[type='datetime-local'] {
+    height: 3.5rem;
 }
 
 .show {

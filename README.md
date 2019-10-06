@@ -57,3 +57,8 @@ Project > Card > Card Task List > Card List Task
          T  T T  T                    T  T T  T
 
 ```
+
+# Tasks
+
+- [ ] Create logic for displaying the "options" icons on a card list component.
+  - Use the "options" value as the boolean flag.

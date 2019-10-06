@@ -12,12 +12,19 @@ const AddCardModal = ({ open, closeModal, details }) => {
       <svg className={styles.AddCardModal_close} onClick={closeModal}>
         <use xlinkHref={`${sprite}#icon-clearclose`}></use>
       </svg>
-      <h2 className={styles.AddCardModal_title}>
-        {details ? details.title : "No project selected"}
-      </h2>
+
+      {/* TOP SECTION */}
+      <div className={styles.AddCardModal_top}>
+        <svg className={styles.AddCardModal_top_icon}>
+          <use xlinkHref={`${sprite}#icon-developer_board`}></use>
+        </svg>
+        <h2 className={styles.AddCardModal_top_title}>
+          {details ? details.title : "No project selected"}
+        </h2>
+      </div>
       <form className={styles.AddCardModal_form}>
         <label htmlFor="listTitle" className={styles.AddCardModal_form_label}>
-          Create a Card Title
+          Create a card title
         </label>
         <input
           type="text"
@@ -27,7 +34,7 @@ const AddCardModal = ({ open, closeModal, details }) => {
           placeholder="some project..."
         />
         <label htmlFor="listItem" className={styles.AddCardModal_form_label}>
-          Add a List to the Card
+          Add a list to the card
         </label>
         <input
           type="text"
@@ -36,6 +43,45 @@ const AddCardModal = ({ open, closeModal, details }) => {
           className={styles.AddCardModal_form_input}
           placeholder="some list of tasks..."
         />
+        <div className={styles.AddCardModal_form_comment}>
+          <div className={styles.AddCardModal_form_comment_iconWrapper}>
+            <svg className={styles.AddCardModal_form_comment_iconWrapper_icon}>
+              <use xlinkHref={`${sprite}#icon-list`}></use>
+            </svg>
+            <label
+              htmlFor="listComment"
+              className={styles.AddCardModal_form_label}
+            >
+              Add a comment
+            </label>
+          </div>
+          <textarea
+            type="text"
+            name="listComment"
+            id="listComment"
+            className={styles.AddCardModal_form_comment_textarea}
+            placeholder="Write a comment..."
+            resize={"none"}
+            required={false}
+          />
+        </div>
+        <div className={styles.AddCardModal_form_dates}>
+          <svg className={styles.AddCardModal_form_dates_icon}>
+            <use xlinkHref={`${sprite}#icon-calendar1`}></use>
+          </svg>
+          <label htmlFor="dueDate" className={styles.AddCardModal_form_label}>
+            Due Date
+          </label>
+        </div>
+        <input
+          type="datetime-local"
+          name="dueDate"
+          id="dueDate"
+          className={styles.AddCardModal_form_input}
+          placeholder="Set a due date..."
+        />
+
+        <button className={styles.AddCardModal_form_btn}>Create</button>
       </form>
     </div>
   );

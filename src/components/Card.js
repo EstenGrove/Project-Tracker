@@ -1,12 +1,11 @@
-import React, { useEffect } from "react";
+import React from "react";
 import styles from "../css/Card.module.scss";
 import sprite from "../assets/project-tracker.svg";
 import CardTaskList from "./CardTaskList";
-import { project } from "../mockdata/mockdata";
+// import { project } from "../mockdata/mockdata";
 import { keyGenerator } from "../utils/keyGenerator";
 
-const Card = () => {
-  const { title, lists } = project;
+const Card = ({ ...card }) => {
   const uuid = keyGenerator();
 
   function mapListsToComponents(lists) {
@@ -25,18 +24,17 @@ const Card = () => {
     });
   }
 
-  useEffect(() => {}, [lists]);
-
+  console.log(card);
   return (
     <div className={styles.Card}>
       <div className={styles.Card_top}>
-        <h4 className={styles.Card_top_title}>{title}</h4>
+        <h4 className={styles.Card_top_title}>{card && card.title}</h4>
         <svg className={styles.Card_top_menu}>
           <use xlinkHref={`${sprite}#icon-keyboard_control`}></use>
         </svg>
       </div>
       <div className={styles.Card_inner}>
-        {mapListsToComponents(lists)}
+        {card && mapListsToComponents(card.lists)}
         <button className={styles.Card_inner_btn}>Create a list</button>
       </div>
     </div>

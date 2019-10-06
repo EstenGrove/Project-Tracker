@@ -5,7 +5,10 @@ export const project = {
       {
         title: "Pick Design Library",
         id: 1,
-        comments: ["Check out MaterializeCSS", "ANT CSS"]
+        comments: ["Check out MaterializeCSS", "ANT CSS"],
+        options: {
+          hide: false
+        }
       },
       { title: "Add basic layout", id: 2 }
     ],
@@ -14,7 +17,10 @@ export const project = {
       {
         title: "Add basic layout",
         id: 2,
-        comments: ["Structure routing", "Dont focus on styles"]
+        comments: ["Structure routing", "Dont focus on styles"],
+        options: {
+          hide: false
+        }
       }
     ]
   }

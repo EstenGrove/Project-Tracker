@@ -6,8 +6,8 @@ import { keyGenerator } from "../utils/keyGenerator";
 const CardTaskList = ({ tasks, title }) => {
   const uuid = keyGenerator();
 
-  console.log(tasks);
-  console.log(title);
+  // console.log(tasks);
+  // console.log(title);
   return (
     <div className={styles.CardTaskList}>
       <div className={styles.CardTaskList_inner}>
