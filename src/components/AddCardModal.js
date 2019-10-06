@@ -2,7 +2,13 @@ import React from "react";
 import styles from "../css/AddCardModal.module.scss";
 import sprite from "../assets/project-tracker.svg";
 
-const AddCardModal = ({ open, closeModal, details }) => {
+const AddCardModal = ({
+  open,
+  closeModal,
+  details,
+  handleChange,
+  handleSubmit
+}) => {
   return (
     <div
       className={
@@ -32,16 +38,29 @@ const AddCardModal = ({ open, closeModal, details }) => {
           id="listTitle"
           className={styles.AddCardModal_form_input}
           placeholder="some project..."
+          onChange={handleChange}
         />
-        <label htmlFor="listItem" className={styles.AddCardModal_form_label}>
+
+        <hr style={{ width: "100%", opacity: ".3", marginBottom: "3rem" }} />
+        {/* CARD ADDONS */}
+        <div className={styles.AddCardModal_form_addons}>
+          <svg className={styles.AddCardModal_form_icon}>
+            <use xlinkHref={`${sprite}#icon-view_list`}></use>
+          </svg>
+          <h4 className={styles.AddCardModal_form_addons_title}>
+            Card Add-ons
+          </h4>
+        </div>
+        <label htmlFor="listTask" className={styles.AddCardModal_form_label}>
           Add a list to the card
         </label>
         <input
           type="text"
-          name="listItem"
-          id="listItem"
+          name="listTask"
+          id="listTask"
           className={styles.AddCardModal_form_input}
           placeholder="some list of tasks..."
+          onChange={handleChange}
         />
         <div className={styles.AddCardModal_form_comment}>
           <div className={styles.AddCardModal_form_comment_iconWrapper}>
@@ -63,6 +82,7 @@ const AddCardModal = ({ open, closeModal, details }) => {
             placeholder="Write a comment..."
             resize={"none"}
             required={false}
+            onChange={handleChange}
           />
         </div>
         <div className={styles.AddCardModal_form_dates}>
@@ -79,9 +99,16 @@ const AddCardModal = ({ open, closeModal, details }) => {
           id="dueDate"
           className={styles.AddCardModal_form_input}
           placeholder="Set a due date..."
+          onChange={handleChange}
         />
 
-        <button className={styles.AddCardModal_form_btn}>Create</button>
+        <button
+          className={styles.AddCardModal_form_btn}
+          onSubmit={e => handleSubmit(e)}
+          onClick={e => handleSubmit(e)}
+        >
+          Create
+        </button>
       </form>
     </div>
   );

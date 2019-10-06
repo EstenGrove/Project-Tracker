@@ -3,6 +3,7 @@
 
 .CardsContainer {
     @include fill_container;
-    // @include col_start_start;
     @include base_flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap
 }

@@ -2,7 +2,6 @@ import React from "react";
 import styles from "../css/Card.module.scss";
 import sprite from "../assets/project-tracker.svg";
 import CardTaskList from "./CardTaskList";
-// import { project } from "../mockdata/mockdata";
 import { keyGenerator } from "../utils/keyGenerator";
 
 const Card = ({ ...card }) => {
@@ -24,7 +23,6 @@ const Card = ({ ...card }) => {
     });
   }
 
-  console.log(card);
   return (
     <div className={styles.Card}>
       <div className={styles.Card_top}>

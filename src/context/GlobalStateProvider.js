@@ -1,26 +1,36 @@
 import React, { useReducer, createContext } from "react";
+import { keyGenerator } from "../utils/keyGenerator";
+import { saveToStorage, getFromStorage } from "../utils/localStorageHelpers";
 
 export const cards = [
   {
-    title: "Project Title: Dashboard",
+    id: keyGenerator(),
+    title: "Dashboard",
     lists: {
       "Build UI": [
         {
           title: "Pick Design Library",
-          id: 1,
+          id: 12,
           comments: ["Check out MaterializeCSS", "ANT CSS"],
           options: {
             hide: false
           }
         },
-        { title: "Add basic layout", id: 2 }
-      ],
-      "Beta Testing": [
-        { title: "Pick Design Library", id: 1 },
         {
           title: "Add basic layout",
-          id: 2,
-          comments: ["Structure routing", "Dont focus on styles"],
+          id: 21,
+          comments: [],
+          options: {
+            hide: false
+          }
+        }
+      ],
+      "Beta Testing": [
+        { title: "Scaffold Global State", id: 13 },
+        {
+          title: "Map out data structure",
+          id: 23,
+          comments: ["Consider redux", "Look into MobX"],
           options: {
             hide: false
           }
@@ -29,25 +39,44 @@ export const cards = [
     }
   },
   {
-    title: "Project Title: Dashboard",
+    id: keyGenerator(),
+    title: "Component Library",
     lists: {
-      "Build UI": [
+      "State Handling": [
         {
-          title: "Pick Design Library",
+          title: "Create state reducer",
           id: 1,
-          comments: ["Check out MaterializeCSS", "ANT CSS"],
+          comments: [
+            "Don't make state too complex",
+            "KISS, keep it stupid simple"
+          ],
           options: {
             hide: false
           }
         },
-        { title: "Add basic layout", id: 2 }
+        {
+          title: "Create context provider",
+          id: 2,
+          comments: [],
+          options: {
+            hide: false
+          }
+        }
       ],
       "Beta Testing": [
-        { title: "Pick Design Library", id: 1 },
         {
-          title: "Add basic layout",
+          title: "Create Testing Approach",
+          id: 1,
+          comments: [],
+          options: { hide: false }
+        },
+        {
+          title: "Workout testing ideas and concepts",
           id: 2,
-          comments: ["Structure routing", "Dont focus on styles"],
+          comments: [
+            "Remember 'afterEach' cleanup",
+            "Dont test implementation details!"
+          ],
           options: {
             hide: false
           }
@@ -65,6 +94,7 @@ export const stateReducer = (state, action) => {
   switch (action.type) {
     // FETCHING
     case "FETCH_CARDS":
+      // first check storage then the db
       return;
     case "FETCH_LISTS":
       return;
@@ -72,9 +102,24 @@ export const stateReducer = (state, action) => {
       return;
     // CREATING
     case "CREATE_CARD":
-      return;
+      const { title, lists } = action.data;
+      const newCard = {
+        id: keyGenerator(),
+        title: title,
+        lists: lists
+      };
+      saveToStorage("CARDS", state);
+
+      return [...state, newCard];
     case "CREATE_LIST":
-      return;
+      const currentID = action.data.id;
+      const currentCard = state.filter((card, index) => currentID === card.id);
+      const { lists: existingLists } = currentCard;
+      const newList = action.data.newList;
+      const allLists = { existingLists, newList };
+      currentCard.lists = allLists;
+
+      return [...state, currentCard];
     case "CREATE_TASK":
       return;
     // DELETING
