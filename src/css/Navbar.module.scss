@@ -13,6 +13,7 @@
     box-shadow: map-get($map: $shadows, $key: 'light');
     padding: 1rem 2rem;
     @include row_vertical_center;
+    z-index: 20;
 
     &_menu {
         width: 3rem;

@@ -26,6 +26,54 @@
             fill: map-get($map: $blueGreys, $key: 'subheadings');
             margin-left: auto;
             opacity: 0;
+
+            &:hover {
+                fill: map-get($map: $colors, $key: 'mainOrange');
+            }
+        }
+    }
+
+    // bottom icons section
+    &_options {
+        margin-top: 1rem;
+        width: 100%;
+        height: auto;
+        @include row_vertical_center;
+
+        &_comments {
+            width: auto;
+            margin-top: .2rem;
+            @include row_vertical_center;
+
+            &_icon {
+                width: 1.5rem;
+                height: 1.5rem;
+                fill: map-get($map: $blueGreys, $key: 'subheadings');
+
+                &:hover {
+                    cursor: pointer;
+                    fill: map-get($map: $blueGreys, $key: 'headings');
+                }
+            }
+
+            &_commentCount {
+                font-size: 1.2rem;
+                margin-bottom: .2rem;
+                margin-left: .2rem;
+                color: map-get($map: $blueGreys, $key: 'subheadings');
+            }
+        }
+
+        &_icon {
+            width: 1.5rem;
+            height: 1.5rem;
+            margin-right: .8rem;
+            fill: map-get($map: $blueGreys, $key: 'subheadings');
+
+            &:hover {
+                cursor: pointer;
+                fill: map-get($map: $blueGreys, $key: 'headings');
+            }
         }
     }
 }

@@ -53,5 +53,7 @@ Project > Card > Card Task List > Card List Task
            \   /                       \    /
            -----                       ------
            Tasks                        Tasks
+          / | | \                      / | | \
+         T  T T  T                    T  T T  T
 
 ```

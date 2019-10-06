@@ -4,7 +4,7 @@ import styles from "../css/CreateTaskList.module.scss";
 const CreateTaskList = () => {
   return (
     <div className={styles.CreateTaskList}>
-      <form action="" className={styles.CreateTaskList_form}>
+      <form className={styles.CreateTaskList_form}>
         <label htmlFor="listTitle" className={styles.CreateTaskList_form_label}>
           Title
         </label>
@@ -13,6 +13,16 @@ const CreateTaskList = () => {
           name="listTitle"
           id="listTitle"
           className={styles.CreateTaskList_form_input}
+        />
+        <label htmlFor="listItem" className={styles.CreateTaskList_form_label}>
+          Task
+        </label>
+        <input
+          type="text"
+          name="listItem"
+          id="listItem"
+          className={styles.CreateTaskList_form_input}
+          placeholder="Enter a task..."
         />
       </form>
     </div>

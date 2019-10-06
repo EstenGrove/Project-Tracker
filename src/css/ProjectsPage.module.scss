@@ -1,0 +1,7 @@
+@import '../sass/variables';
+@import '../sass/mixins';
+
+.ProjectsPage {
+    @include fill_container;
+    position: relative;
+}
