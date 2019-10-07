@@ -5,9 +5,8 @@ import CardTaskList from "./CardTaskList";
 import CardActionsModal from "./CardActionsModal";
 import { keyGenerator } from "../utils/keyGenerator";
 
-const Card = ({ isEditing, createList, deleteCard, ...card }) => {
+const Card = ({ createOrEditList, deleteCard, ...card }) => {
   const uuid = keyGenerator();
-  const creatingList = isEditing;
   const [showActionsModal, setShowActionsModal] = useState(false);
 
   const openActionsModal = (...card) => {
@@ -45,18 +44,9 @@ const Card = ({ isEditing, createList, deleteCard, ...card }) => {
       <div className={styles.Card_inner}>
         {card && mapListsToComponents(card.lists)}
         <div className={styles.Card_inner_editList}>
-          {creatingList && (
-            <input
-              type="text"
-              name="createList"
-              id="createList"
-              className={styles.Card_inner_editList_input}
-              placeholder="Create a list title..."
-            />
-          )}
           <button
             className={styles.Card_inner_btn}
-            onClick={() => createList(card)}
+            onClick={() => createOrEditList(card)}
           >
             Create a list
           </button>

@@ -25,6 +25,7 @@ export const cards = [
           }
         }
       ],
+
       "Beta Testing": [
         { title: "Scaffold Global State", id: 13 },
         {
@@ -94,7 +95,8 @@ export const stateReducer = (state, action) => {
   switch (action.type) {
     // FETCHING
     case "FETCH_CARDS":
-      // first check storage then the db
+      const items = getFromStorage("CARDS");
+      console.log(items);
       return;
     case "FETCH_LISTS":
       return;
@@ -112,17 +114,15 @@ export const stateReducer = (state, action) => {
 
       return [...state, newCard];
     case "CREATE_LIST":
-      return;
-    case "CREATE_TASK":
-      return;
-    // DELETING
-    case "DELETE_CARD":
-      const { id } = action.data;
+      const { id, newList } = action.data;
+      const { newTitle, newListItem } = newList;
 
-      return [...state.filter((card, index) => card.id !== id)];
-    case "DELETE_LIST":
-      return;
-    case "DELETE_TASK":
+      const currentCard = state.filter(card => card.id === id);
+      const { lists: currentLists } = currentCard;
+      currentLists.push(...newListItem);
+      currentCard.lists = currentLists;
+      return [...state];
+    case "CREATE_TASK":
       return;
     // UPDATING
     case "UPDATE_CARD":
@@ -130,6 +130,15 @@ export const stateReducer = (state, action) => {
     case "UPDATE_LIST":
       return;
     case "UPDATE_TASK":
+      return;
+    // DELETING
+    case "DELETE_CARD":
+      const { id: idToDelete } = action.data;
+
+      return [...state.filter((card, index) => card.id !== idToDelete)];
+    case "DELETE_LIST":
+      return;
+    case "DELETE_TASK":
       return;
     default:
       return new Error("Unrecognized action provided");

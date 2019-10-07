@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useContext } from "react";
 import styles from "../css/AddCardModal.module.scss";
 import sprite from "../assets/project-tracker.svg";
+import { GlobalState } from "../context/GlobalStateProvider";
 
 const AddCardModal = ({
   open,
@@ -10,7 +11,9 @@ const AddCardModal = ({
   handleSubmit,
   ...rest
 }) => {
+  const { state } = useContext(GlobalState);
   console.log(rest);
+
   return (
     <div
       className={
